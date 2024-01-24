@@ -1,24 +1,16 @@
 "use client"
+import { HiPencilSquare } from "react-icons/hi2";
 import React, { useEffect, useState } from 'react'
 import RemoveBtn from './RemoveBtn'
 import Link from "next/link"
-import { HiPencilSquare } from "react-icons/hi2";
 import AddTopicBtn from './AddTopicBtn';
+import getConfig from "next/config";
 
 
-const getTopics = async () => {
-    try {
-        const res = await fetch("http://localhost:3000/api/topics", {
-            cache: "no-store",
-        });
 
-        if (!res.ok) {
-            throw new Error("Failed to fetch the Topics")
-        }
-    } catch (error) {
-        console.log("Error Loading Topics:", error);
-    }
-}
+const  serverRuntimeConfig  = getConfig()
+console.log("🚀 ~ serverRuntimeConfig:", serverRuntimeConfig)
+
 
 interface Topic {
     title: any;
@@ -30,13 +22,13 @@ interface Topic {
 
 const TopicList = () => {
 
-    // const { topics } = await getTopics();
+
     const [topics, setTopics] = useState<Topic[]>([])
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch('http://localhost:3000/api/topics', {
+                const res = await fetch(`${process.env.serverRuntimeConfig}/api/topics`, {
                     cache: 'no-store',
                 });
 
