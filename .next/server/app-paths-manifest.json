@@ -1,6 +1,0 @@
-{
-  "/not-found": "app/not-found.js",
-  "/page": "app/page.js",
-  "/addTopic/page": "app/addTopic/page.js",
-  "/editTopic/[id]/page": "app/editTopic/[id]/page.js"
-}
