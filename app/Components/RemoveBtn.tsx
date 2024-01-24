@@ -2,16 +2,15 @@
 
 import React from 'react'
 import { FaTrash } from "react-icons/fa";
-// import { useRouter } from 'next/navigation';
 
 
-export default function RemoveBtn({ id }) {
+export default function RemoveBtn({ id }:any) {
     // const router = useRouter();
     const removeTopic = async () => {
         const confirmed = confirm("Are you sure!");
 
         if (confirmed) {
-            const res = await fetch(`http://localhost:3000/api/topics?id=${id}`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/topics?id=${id}`, {
                 method: 'DELETE',
             });
             if (res.ok) {

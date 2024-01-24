@@ -3,11 +3,6 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/navigation';
 
 
-// interface EditTopicForm {
-//     id: any;
-//     title: any;
-//     description: any;
-// }
 
 const EditTopicForm = ({ id, title, description }: any) => {
     const router = useRouter();
@@ -20,7 +15,7 @@ const EditTopicForm = ({ id, title, description }: any) => {
         e.preventDefault();
 
         try {
-            const res = await fetch(`http://localhost:3000/api/topics/${id}`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/topics/${id}`, {
                 method: 'PUT',
                 headers: {
                     "Content-type": "application/json",

@@ -1,19 +1,10 @@
 import EditTopicForm from '@/app/Components/EditTopicForm'
 import React from 'react'
 
-// interface topic {
-//     id: string;
-//     title: string;
-//     description: string;
-// }
-
-// interface params {
-//     id: string;
-// }
 
 const getTopicById = async (id: any) => {
     try {
-        const res = await fetch(`http://localhost:3000/api/topics/${id}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/topics/${id}`, {
             cache: "no-store",
         });
         console.log(res)
